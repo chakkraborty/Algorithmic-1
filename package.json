@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.2",
     "axios": "^1.4.0"
   }
 }

@@ -1,7 +1,8 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Login() {
 
@@ -37,7 +38,7 @@ export default function Login() {
                         <Form.Check type="checkbox" label='Remember me' name="rem" onChange={handleInput}></Form.Check>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Button className="submit-button" variant="primary" value="submit" type="submit" onClick={handleSubmit}>Sign in</Button>
+                        <Button className="submit-button" variant="primary" value="submit" type="submit" onClick={handleSubmit}>submit</Button>
                     </Form.Group>
                 </Form>
             </div>

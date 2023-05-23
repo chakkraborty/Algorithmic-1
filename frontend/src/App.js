@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <Button href="login" variant='primary' size='sm'> Large Button</Button> */}
         <Login />
       </header>
     </div>

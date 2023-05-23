@@ -1,14 +1,12 @@
 import './App.css';
-
+import Login from "./components/screens/login/login";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div style={{ backgroundColor: "green" }}>Body</div>
+        {/* <Button href="login" variant='primary' size='sm'> Large Button</Button> */}
+        <Login />
       </header>
     </div>
   );

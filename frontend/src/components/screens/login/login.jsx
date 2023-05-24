@@ -1,15 +1,11 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./Register.css";
-import { useState } from "react";
-export default function Register() {
-  const [data, setData] = useState({
-    lname: "",
-    fname: "",
-    email: "",
-    password: "",
-    rem: 0,
-  });
+import "./login.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function Login() {
+  const [data, setData] = useState({ email: "", password: "", rem: 0 });
 
   const handleInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.event });
@@ -25,29 +21,7 @@ export default function Register() {
       <div className="myForm d-flex justify-content-center align-items-center">
         <Form className="rounded p-4 p-sm-7 signup-form loginContainer">
           <Form.Group className="mb-3">
-            <h1 className="heading">Register</h1>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              className="mb-3"
-              controlId="formBasicEmail"
-              type="text"
-              placeholder="First Name"
-              name="fname"
-              onChange={handleInput}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              className="mb-3"
-              controlId="formBasicEmail"
-              type="text"
-              placeholder="Last Name"
-              name="lname"
-              onChange={handleInput}
-            />
+            <h1 className="heading">Login</h1>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Email Address</Form.Label>

@@ -1,13 +1,13 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./login.css";
+import "./Register.css";
 import { useState } from "react";
 export default function Register() {
 
     const [data, setData] = useState({ lname: "", fname: "", email: "", password: "", rem: 0 });
 
     const handleInput = (e) => {
-        setData({ ...data, [e.target.name]: e.target.event });
+        setData({ ...data, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (event) => {

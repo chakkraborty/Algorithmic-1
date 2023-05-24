@@ -1,5 +1,22 @@
-.myclass {
-    background-color: aliceblue;
-    height: 10rem;
-    width: auto;
+.title {
+    font-size: xx-large;
+}
+
+.accordion-button {
+    background-color: inherit !important;
+    border: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.dropdown {
+    box-shadow: none;
+}
+
+.link {
+    text-decoration: none;
+    color: ghostwhite;
+    font-size: 120%;
 }

@@ -1,39 +1,11 @@
 import Container from "react-bootstrap/Container";
 import "./listele.css";
-import Badge from "react-bootstrap/Badge";
-import Stack from "react-bootstrap/Stack";
-import { Row, Col } from "react-bootstrap"
-import { useState, useEffect } from "react";
-import Checkbox from '@mui/material/Checkbox';
-import Accordion from 'react-bootstrap/Accordion';
 
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Row, Col } from "react-bootstrap"
+import Accordion from 'react-bootstrap/Accordion';
 import Grid from "./grid_for_element";
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 export default function ListElement(props) {
-
-    const [badge, setBadge] = useState("sucess");
-
-    const func = (str) => {
-        if (str === "Medium")
-            setBadge("warning");
-        else if (str === "Hard")
-            setBadge("danger");
-        else
-            setBadge("success");
-    }
-
-    useEffect(() => {
-        func(props.difficulty);
-    })
-
-
-
 
     return (
         <>
@@ -58,7 +30,7 @@ export default function ListElement(props) {
                                             <h5>Problem</h5>
                                         </Col>
                                         <Col>
-                                            <h5></h5>
+                                            <h5>{""}</h5>
                                         </Col>
                                     </Row>
                                     <></>

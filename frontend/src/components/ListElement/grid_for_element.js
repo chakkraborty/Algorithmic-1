@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Badge from "react-bootstrap/Badge";
 import Check from "react-bootstrap/FormCheckInput";
 
-export default function (props) {
+export default function Grid(props) {
 
 
     const [badge, setBadge] = useState("sucess");

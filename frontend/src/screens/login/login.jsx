@@ -15,6 +15,10 @@ export default function Login() {
     console.log(data);
   };
 
+  const handleRegister = (event) => {
+
+  }
+  const str = "No account ? ";
   return (
     <div className="formContainer">
       <div className="myForm d-flex justify-content-center align-items-center">
@@ -28,7 +32,7 @@ export default function Login() {
               className="mb-3"
               controlId="formBasicEmail"
               type="email"
-              placeholder="Email"
+              placeholder="Enter Email"
               name="email"
               onChange={handleInput}
             />
@@ -38,7 +42,7 @@ export default function Login() {
             <Form.Control
               className="email-input"
               type="password"
-              placeholder="Password"
+              placeholder="Enter Password"
               name="password"
               onChange={handleInput}
             />
@@ -59,8 +63,13 @@ export default function Login() {
               type="submit"
               onClick={handleSubmit}
             >
-              submit
+              Sign in
             </Button>
+          </Form.Group>
+          <Form.Group>
+            <Form.Text>{str}
+              <a href="/register" onClick={handleRegister}> Create here!</a>
+            </Form.Text>
           </Form.Group>
         </Form>
       </div>

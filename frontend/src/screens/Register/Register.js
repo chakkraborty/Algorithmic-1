@@ -15,6 +15,12 @@ export default function Register() {
         console.log(data);
     };
 
+    const handleLogin = (event) => {
+
+    }
+
+    const str = "Already have an account ?   ";
+
     return (
         <div className="formContainer">
             <div className="myForm d-flex justify-content-center align-items-center">
@@ -28,7 +34,7 @@ export default function Register() {
                             className="mb-3"
                             controlId="formBasicEmail"
                             type="text"
-                            placeholder="First Name"
+                            placeholder="Enter First Name"
                             name="fname"
                             onChange={handleInput}
                         />
@@ -39,7 +45,7 @@ export default function Register() {
                             className="mb-3"
                             controlId="formBasicEmail"
                             type="text"
-                            placeholder="Last Name"
+                            placeholder="Enter Last Name"
                             name="lname"
                             onChange={handleInput}
                         />
@@ -50,7 +56,7 @@ export default function Register() {
                             className="mb-3"
                             controlId="formBasicEmail"
                             type="email"
-                            placeholder="Email"
+                            placeholder="Enter Email"
                             name="email"
                             onChange={handleInput}
                         />
@@ -60,18 +66,20 @@ export default function Register() {
                         <Form.Control
                             className="email-input"
                             type="password"
-                            placeholder="Password"
+                            placeholder="Enter Password"
                             name="password"
                             onChange={handleInput}
                         />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Check
-                            type="checkbox"
-                            label="Remember me"
-                            name="rem"
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control
+                            className="email-input"
+                            type="text"
+                            placeholder="Re-enter Password"
+                            name="confirm_password"
                             onChange={handleInput}
-                        ></Form.Check>
+                        />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Button
@@ -81,8 +89,13 @@ export default function Register() {
                             type="submit"
                             onClick={handleSubmit}
                         >
-                            submit
+                            Sign up
                         </Button>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Text>{str}
+                            <a href="/login" onClick={handleLogin}> Sign in here!</a>
+                        </Form.Text>
                     </Form.Group>
                 </Form>
             </div>

@@ -7,18 +7,6 @@ import { Routes, BrowserRouter, Route } from "react-router-dom";
 import MyList from "./components/ViewLists/ListsPage.js";
 import Element from "./components/ListElement/listele";
 
-
-const arr = [
-  {
-    _id: 12324,
-    title: "Implement stack",
-    difficulty: "Hard",
-    done: 0,
-    topic: "Stack",
-    link: "https://leetcode.com/problems/maximum-subsequence-score/"
-  }
-];
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -31,7 +19,7 @@ export default function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route exact path="/mylist" element={<MyList />}></Route>
-        <Route path="/element" element={<Element topic={arr[0].topic} title={arr[0].title} difficulty={arr[0].difficulty} link={arr[0].link} _id={arr[0]._id} />} />
+        <Route path="/element" element={<Element topic="Stack" difficulty="Medium" />} />
       </Routes>
     </BrowserRouter>
   );

@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <NavbarB collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <NavbarB.Brand href="#home"><h1 className="Brand">Algorithmic</h1></NavbarB.Brand>
+                <NavbarB.Brand href="#home">Algorithmic</NavbarB.Brand>
                 <NavbarB.Toggle aria-controls="responsive-navbar-nav" />
                 <NavbarB.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">

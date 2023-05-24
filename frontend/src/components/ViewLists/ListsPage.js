@@ -16,7 +16,7 @@ const ListsPage = () => {
     <div>
       <Navbar />
       <div className="rounded ListPageWrapper">
-        <div className="myListLeftSection">
+        <div className="rounded myListLeftSection">
           <div className="myListHeader">My List</div>
           <div className="myListItem"> 1. ListItem</div>
           <div className="myListLeftSectionBottom">

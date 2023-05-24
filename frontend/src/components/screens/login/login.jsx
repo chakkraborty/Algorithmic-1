@@ -60,7 +60,7 @@ export default function Login() {
               type="submit"
               onClick={handleSubmit}
             >
-              submit
+              Submit
             </Button>
           </Form.Group>
         </Form>

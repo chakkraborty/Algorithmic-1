@@ -61,7 +61,7 @@ export default function Grid(props) {
 
   return (
     <>
-      {/* <Table
+      <Table
         className="table rounded table-light table-hover table-striped"
         responsive="sm"
       >
@@ -120,7 +120,7 @@ export default function Grid(props) {
             );
           })}
         </TableBody>
-      </Table> */}
+      </Table>
     </>
   );
 }

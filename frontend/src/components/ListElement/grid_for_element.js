@@ -42,19 +42,19 @@ export default function Grid(props) {
 
     return (
         <>
-            <Table className="table table-light table-hover table-responsive-sm table-striped">
+            <Table className="table rounded table-light table-hover table-striped" responsive="sm">
                 <TableHead className="thead-dark">
                     <TableRow>
-                        <th scope="col">
-                            <h5>Status</h5>
+                        <th class="same-size-col">
+                            <h1 className="heading">Status</h1>
                         </th>
-                        <th scope="col">
-                            <h5>Difficulty</h5>
+                        <th class="same-size-col">
+                            <h1 className="heading">Difficulty</h1>
                         </th>
-                        <th scope="col">
-                            <h5>Problem</h5>
+                        <th class="same-size-col">
+                            <h1 className="heading">Problem</h1>
                         </th>
-                        <th scope="col"></th>
+                        <th class="same-size-col"></th>
                     </TableRow>
                 </TableHead>
                 <TableBody>

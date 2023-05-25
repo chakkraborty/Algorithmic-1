@@ -7,6 +7,7 @@ const connect = require('./config/connect');
 connect();
 
 app.get(["/"], (req, res) => {
+
     res.send("Connected");
 })
 

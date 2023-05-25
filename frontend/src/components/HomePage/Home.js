@@ -35,13 +35,30 @@ const Home = () => {
   const [i, seti] = useState(0);
   const [problems, setProblems] = useState([]);
 
+  // const fetchProblems = async () => {
+  //   try {
+  //     const res = await axios.get("/api/getProblems");
+
+  //     console.log(res.data);
+
+  //     setProblems(res.data);
+  //     console.log(problems);
+
+  //     console.log(typeof data);
+  //   } catch (error) {
+  //     console.log("something is wrong");
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchProblems();
+  // }, []);
+
   const fetchProblems = async () => {
     try {
-      const res = await axios.get("/api/getProblems");
+      const { res } = await axios.get("/api/getProblems");
+      //console.log(res.data);
 
-      console.log(res.data);
-
-      setProblems(res.data);
+      setProblems(res);
       console.log(problems);
 
       console.log(typeof data);

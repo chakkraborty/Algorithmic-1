@@ -6,3 +6,4 @@ node_modules
 /backend/dotenv
 /backend/.env
 ./backend/.env
+.env

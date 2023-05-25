@@ -53,6 +53,7 @@ const ListElement = (props) => {
                   difficulty={props.difficulty}
                   title={props.title}
                   link={props.link}
+                  top={props.topic}
                 />
               </Accordion.Body>
             </Accordion.Item>

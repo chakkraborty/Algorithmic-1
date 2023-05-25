@@ -1,12 +1,14 @@
-const express = require('express');
 require('dotenv').config();
+const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const connect = require('./config/connect');
+const connectDB = require('./config/connect');
+connectDB();
 
-connect();
 
-app.get(["/"], (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get(["/", "/home"], (req, res) => {
 
     res.send("Connected");
 })

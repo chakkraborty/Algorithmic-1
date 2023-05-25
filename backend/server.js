@@ -1,25 +1,74 @@
 const express = require("express");
 require("dotenv").config();
+const bcrypt = require('bcrypt');
 const app = express();
 const mongoose = require("mongoose");
 const connect = require("./config/connect");
 const problemRoutes = require("./routes/problemRoutes");
+const User = require('./models/User');
 connect();
 app.use(express.json());
 app.get(["/"], (req, res) => {
-  res.send("Connected");
+    res.send("Connected");
 });
 app.use("/api", problemRoutes);
-require("dotenv").config();
 app.listen(5000, () => {
-  console.log("Listening at port 5000");
+    console.log("Listening at port 5000");
 });
 // const app = express();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// app.get(["/", "/home"], (req, res) => {
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+    console.log(req.body);
+    bcrypt.hash(password, 10, (err, hash) => {
+        if (err)
+            console.log(err);
+        else {
+            const arr = User.findOne({ email: email, password: password });
+            if (arr.length === 0)
+                res.status(200).send("No such user");
+            else
+                res.status(201).send("Done");
+        }
+    });
+})
 
-// app.listen(5000, () => {
-//   console.log("Listening at port 5000");
-// });
+app.post('/api/register', (req, res) => {
+    const { fname, lname, email, password, confirm_pass } = req.body;
+    console.log(req.body);
+    if (password != confirm_pass) {
+        res.send("Check the password");
+    }
+    else {
+        bcrypt.hash(password, 10, (err, hash) => {
+            if (err)
+                console.log(err);
+            else {
+
+                User.find({ email: email }, (err, data) => {
+                    if (err)
+                        res.status(501).send("Something went wrong");
+                    else {
+                        if (data.length != 0) {
+                            res.status(200).send("Account already exists with same email");
+                        }
+                        else {
+                            User.create({ fname: fname, lname: lname, email: email, password: hash }, (err, data) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.status(404).send("Something went wrong");
+                                }
+                                else {
+                                    res.status(201).send("User Created");
+                                }
+                            });
+                        }
+                    }
+                });
+
+            }
+        });
+    }
+});

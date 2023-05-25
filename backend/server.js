@@ -10,7 +10,16 @@ app.get(["/"], (req, res) => {
   res.send("Connected");
 });
 app.use("/api", problemRoutes);
-
+require("dotenv").config();
 app.listen(5000, () => {
   console.log("Listening at port 5000");
 });
+// const app = express();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// app.get(["/", "/home"], (req, res) => {
+
+// app.listen(5000, () => {
+//   console.log("Listening at port 5000");
+// });

@@ -40,6 +40,8 @@ const Home = () => {
       const { data } = await axios.get("/api/getProblems");
       setProblems(data);
       console.log(problems);
+      console.log(data);
+      //   console.log(problems);
     } catch (error) {
       console.log("something is wrong");
     }

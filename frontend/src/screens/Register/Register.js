@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Register.css";
+import axios from "axios";
 import { useState } from "react";
 export default function Register() {
   const [data, setData] = useState({
@@ -8,6 +9,7 @@ export default function Register() {
     fname: "",
     email: "",
     password: "",
+    confirm_password: "",
     rem: 0,
   });
 
@@ -17,12 +19,9 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
+    axios.post("/api/register", data).then(res => console.log(res)).catch(err => console.log(err));
   };
 
-  const handleLogin = (event) => {
-
-  }
 
   const str = "Already have an account ?   ";
 
@@ -99,7 +98,7 @@ export default function Register() {
           </Form.Group>
           <Form.Group>
             <Form.Text>{str}
-              <a href="/login" onClick={handleLogin}> Sign in here!</a>
+              <a href="/login"> Sign in here!</a>
             </Form.Text>
           </Form.Group>
         </Form>

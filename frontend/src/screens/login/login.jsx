@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./login.css";
+import axios from "axios";
 import { useState } from "react";
 export default function Login() {
 
@@ -12,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
+    axios.post("/api/login", data).then(res => console.log(res)).catch(err => console.log(err));
   };
 
   const handleRegister = (event) => {

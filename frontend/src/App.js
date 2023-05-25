@@ -19,7 +19,10 @@ export default function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route exact path="/mylists" element={<MyList />}></Route>
-        <Route path="/element" element={<Element topic="Stack" difficulty="Easy" />} />
+        <Route
+          path="/element"
+          element={<Element topic="Stack" difficulty="Easy" />}
+        />
       </Routes>
     </BrowserRouter>
   );

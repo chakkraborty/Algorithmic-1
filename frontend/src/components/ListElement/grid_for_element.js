@@ -24,23 +24,26 @@ export default function Grid(props) {
     func(props.difficulty);
   });
 
-  const [data, setData] = useState([]);
+  const [p, setP] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => {
-        const obj = res.data.slice(15);
-        setData(obj);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get("https://jsonplaceholder.typicode.com/posts")
+    //   .then((res) => {
+    //     const obj = res.data.slice(15);
+    //     setData(obj);
+    //     console.log(typeof data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    setP(props.arr);
+    console.log(p);
   }, []);
 
   return (
     <>
-      <Table
+      {/* <Table
         className="table rounded table-light table-hover table-striped"
         responsive="sm"
       >
@@ -97,7 +100,7 @@ export default function Grid(props) {
             );
           })}
         </TableBody>
-      </Table>
+      </Table> */}
     </>
   );
 }

@@ -3,3 +3,6 @@ node_modules
 /node_modules
 /backend/node_modules
 /backend/reference.js
+/backend/dotenv
+/backend/.env
+./backend/.env

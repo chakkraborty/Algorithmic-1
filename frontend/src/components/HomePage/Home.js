@@ -37,9 +37,14 @@ const Home = () => {
 
   const fetchProblems = async () => {
     try {
-      const { data } = await axios.get("/api/getProblems");
-      setProblems(data);
+      const res = await axios.get("/api/getProblems");
+      //problems = data;
+      console.log(res.data);
+
+      setProblems(res.data);
       console.log(problems);
+      //console.log(problems);
+      console.log(typeof data);
     } catch (error) {
       console.log("something is wrong");
     }

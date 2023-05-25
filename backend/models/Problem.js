@@ -10,5 +10,8 @@ const ProblemSchema = new Schema({
   link: {
     type: String,
   },
+  tag: {
+    type: String,
+  },
 });
 module.exports = Cart = mongoose.model("problem", ProblemSchema);

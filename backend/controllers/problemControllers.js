@@ -1,6 +1,6 @@
 const Problem = require("../models/Problem");
 module.exports.addProblem = async (req, res) => {
-  const { difficulty, desc, link } = req.body;
+  const { difficulty, desc, link, tag } = req.body;
   const x = await Problem.create({ difficulty, desc, link });
   if (x) {
     res.status(201).json({
@@ -8,6 +8,7 @@ module.exports.addProblem = async (req, res) => {
       difficulty: x.difficulty,
       desc: x.desc,
       link: x.link,
+      tag: x.tag,
     });
   } else {
     res.status(400);

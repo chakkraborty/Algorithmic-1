@@ -32,6 +32,7 @@ const arr = [
 ];
 
 const Home = () => {
+  let k;
   const [i, seti] = useState(0);
   const [problems, setProblems] = useState([]);
 
@@ -55,13 +56,11 @@ const Home = () => {
 
   const fetchProblems = async () => {
     try {
-      const { res } = await axios.get("/api/getProblems");
-      //console.log(res.data);
-
-      setProblems(res);
-      console.log(problems);
-
-      console.log(typeof data);
+      // const { res } = await axios.get("/api/getProblems");
+      const { data } = await axios.get("/api/getProblems");
+      k = data;
+      console.log(k);
+      console.log(typeof k);
     } catch (error) {
       console.log("something is wrong");
     }

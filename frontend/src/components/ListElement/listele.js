@@ -4,15 +4,17 @@ import { Row, ProgressBar } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import Grid from "./grid_for_element";
 import { useState } from "react";
-export default function ListElement(props) {
-  // console.log(props.arrP);
-  const [a, setA] = useState([]);
-  setA(props.arrP);
-  //console.log(a);
+const ListElement = (props) => {
+  //   const [l, setL] = useState([]);
+  //   setL(props.arrP);
+  //   console.log(l);
+  //console.log(props.r);
+  // console.log("y");
+  //   console.log(props.difficulty);
 
   return (
     <>
-      {/* <Container>
+      <Container>
         <Row className="justify-content-md-center" lg={1}>
           <Accordion>
             <Accordion.Item eventKey="0">
@@ -47,12 +49,18 @@ export default function ListElement(props) {
                 </Container>
               </Accordion.Header>
               <Accordion.Body className="rounded">
-                <Grid arr={props.arrP} />
+                <Grid
+                  difficulty={props.difficulty}
+                  title={props.title}
+                  link={props.link}
+                />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
         </Row>
-      </Container> */}
+      </Container>
     </>
   );
-}
+};
+
+export default ListElement;

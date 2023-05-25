@@ -31,7 +31,7 @@ export default function Register() {
       <div className="myForm d-flex justify-content-center align-items-center">
         <Form className="rounded p-4 p-sm-7 signup-form loginContainer">
           <Form.Group className="mb-3">
-            <h1 className="heading">Register</h1>
+            <h1 className="loginHead">Register</h1>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>First Name</Form.Label>

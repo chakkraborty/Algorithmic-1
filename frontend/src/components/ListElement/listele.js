@@ -20,14 +20,14 @@ export default function ListElement(props) {
                                         <Col><h1 className="title">{props.topic}</h1></Col>
                                         <Col><div className="cls"><ProgressBar>
                                             <ProgressBar striped variant="success" now={35} key={1} />
-                                            <ProgressBar variant="warning" now={20} key={2} />
+                                            <ProgressBar variant="warning" now={30} key={2} />
                                             <ProgressBar striped variant="danger" now={10} key={3} />
                                         </ProgressBar></div></Col>
                                         <Col></Col>
                                     </Row>
                                 </Container>
                             </Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Body className="rounded">
                                 <Grid difficulty={props.difficulty} title={props.title} link={props.link} />
                             </Accordion.Body>
                         </Accordion.Item>

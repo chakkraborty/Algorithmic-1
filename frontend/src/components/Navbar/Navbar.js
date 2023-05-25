@@ -8,22 +8,18 @@ const Navbar = () => {
   return (
     <NavbarB collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <NavbarB.Brand href="#home">Algorithmic</NavbarB.Brand>
+        <NavbarB.Brand href="/home">Algorithmic</NavbarB.Brand>
         <NavbarB.Toggle aria-controls="responsive-navbar-nav" />
         <NavbarB.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Roadmap</Nav.Link>
-            <Nav.Link href="#pricing">Articles</Nav.Link>
+            <Nav.Link href="/home">Roadmap</Nav.Link>
+            <Nav.Link href="/problems">Problems</Nav.Link>
           </Nav>
           <Nav>
             <NavDropdown title="Profile" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Logout</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">My Lists</NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.3"></NavDropdown.Item> */}
-              {/* <NavDropdown.Divider /> */}
-              {/* <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
+              <NavDropdown.Item href="/mylists">My Lists</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/login">Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </NavbarB.Collapse>

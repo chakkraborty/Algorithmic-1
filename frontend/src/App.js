@@ -18,10 +18,10 @@ export default function App() {
         <Route exact path="/home" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
-        <Route exact path="/mylist" element={<MyList />}></Route>
+        <Route exact path="/mylists" element={<MyList />}></Route>
         <Route
           path="/element"
-          element={<Element topic="Stack" difficulty="Medium" />}
+          element={<Element topic="Stack" difficulty="Easy" />}
         />
       </Routes>
     </BrowserRouter>

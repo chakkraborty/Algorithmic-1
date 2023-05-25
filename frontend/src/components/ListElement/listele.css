@@ -1,5 +1,5 @@
 .title {
-    font-size: xx-large;
+    font-size: large;
 }
 
 .accordion-button {
@@ -21,6 +21,7 @@
 
 .accordion-body {
     background-color: #2d2d2d;
+    height: fit-content;
 }
 
 .link {
@@ -30,5 +31,9 @@
 }
 
 .cls {
-    margin-top: 3%;
+    margin-top: 0.8rem;
+}
+
+.accordion {
+    margin: 0.7%;
 }

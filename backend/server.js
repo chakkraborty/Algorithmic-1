@@ -36,12 +36,9 @@ app.post('/api/login', (req, res) => {
 })
 
 app.post('/api/register', (req, res) => {
-    const { fname, lname, email, password, confirm_pass } = req.body;
+    const { fname, lname, email, password, confirm_password } = req.body;
     console.log(req.body);
-    if (password != confirm_pass) {
-        res.send("Check the password");
-    }
-    else {
+    if (password === confirm_password) {
         bcrypt.hash(password, 10, (err, hash) => {
             if (err)
                 console.log(err);
@@ -70,5 +67,9 @@ app.post('/api/register', (req, res) => {
 
             }
         });
+
+    }
+    else {
+        res.send("Check the password");
     }
 });

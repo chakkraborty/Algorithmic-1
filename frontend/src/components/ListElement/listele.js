@@ -1,7 +1,6 @@
-import Container from "react-bootstrap/Container";
+import { Container, Col, Stack } from "react-bootstrap";
 import "./listele.css";
-
-import { Row, Col } from "react-bootstrap"
+import { Row, ProgressBar } from "react-bootstrap"
 import Accordion from 'react-bootstrap/Accordion';
 import Grid from "./grid_for_element";
 
@@ -10,31 +9,25 @@ export default function ListElement(props) {
     return (
         <>
             <Container>
-                <Row className="justify-content-md-center" lg={2}>
-                    <Accordion bsPrefix="">
+                <Row className="justify-content-md-center" lg={1}>
+                    <Accordion>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>
 
-                                <h1 className="title">{props.topic}</h1>
+                                <Container>
+                                    <Row></Row>
+                                    <Row >
+                                        <Col><h1 className="title">{props.topic}</h1></Col>
+                                        <Col><div className="cls"><ProgressBar>
+                                            <ProgressBar striped variant="success" now={35} key={1} />
+                                            <ProgressBar variant="warning" now={20} key={2} />
+                                            <ProgressBar striped variant="danger" now={10} key={3} />
+                                        </ProgressBar></div></Col>
+                                        <Col></Col>
+                                    </Row>
+                                </Container>
                             </Accordion.Header>
                             <Accordion.Body>
-                                <Container>
-                                    <Row>
-                                        <Col className="justify-content-center">
-                                            <h5>Status</h5>
-                                        </Col>
-                                        <Col>
-                                            <h5>Difficulty</h5>
-                                        </Col>
-                                        <Col>
-                                            <h5>Problem</h5>
-                                        </Col>
-                                        <Col>
-                                            <h5>{""}</h5>
-                                        </Col>
-                                    </Row>
-                                    <></>
-                                </Container>
                                 <Grid difficulty={props.difficulty} title={props.title} link={props.link} />
                             </Accordion.Body>
                         </Accordion.Item>

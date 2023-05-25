@@ -7,6 +7,10 @@
     border: none;
 }
 
+.progressbar {
+    justify-content: center;
+}
+
 .accordion-button:focus {
     box-shadow: none;
 }
@@ -15,8 +19,16 @@
     box-shadow: none;
 }
 
+.accordion-body {
+    background-color: #2d2d2d;
+}
+
 .link {
     text-decoration: none;
     color: ghostwhite;
     font-size: 120%;
+}
+
+.cls {
+    margin-top: 3%;
 }

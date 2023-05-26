@@ -14,7 +14,8 @@ export default function Login() {
   const func = (p) => {
     console.log(p);
     if (p) {
-      localStorage.setItem("userInfo", JSON.stringify(p));
+      localStorage.setItem("userInfo", JSON.stringify(p._id));
+      localStorage.setItem("userList", JSON.stringify(p.list));
       navigate("/home");
     }
   };

@@ -13,6 +13,8 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckIcon from "@mui/icons-material/Check";
 export default function Grid(props) {
   const [arr, setArr] = useState([]);
+  const [pl, setPl] = useState([]);
+  const [done, setDone] = useState([]);
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   // const x = props.l;
   // console.log(x);
@@ -35,14 +37,7 @@ export default function Grid(props) {
           "Content-type": "application/json",
         },
       };
-      const d = await axios.post(
-        "/api/findIfSolved",
-        {
-          userId: kk,
-          problemId: id,
-        },
-        config
-      );
+      const d = await axios.post(`/api/markProblem/${kk}/${id}`, config);
       let v = d.data.value;
       //console.log(v);
       //console.log("type of v is " + typeof v);
@@ -52,25 +47,70 @@ export default function Grid(props) {
       console.log(error);
     }
   };
+  // const validate = async (id) => {
+  //   try {
+  //     //console.log("validation");
+  //     const a = JSON.parse(localStorage.getItem("userInfo"));
+  //     const kk = a.data._id;
+  //     const config = {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     };
+  //     const d = await axios.post(
+  //       "/api/findIfSolved",
+  //       {
+  //         userId: kk,
+  //         problemId: id,
+  //       },
+  //       config
+  //     );
+  //     let v = d.data.value;
+  //     //console.log(v);
+  //     //console.log("type of v is " + typeof v);
+  //     //console.log(d);
+  //     return v;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const fetcher = async () => {
+    const a = JSON.parse(localStorage.getItem("userInfo")).data._id;
+    console.log(a);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(`/api/getProblems/${a}`, config);
+    console.log(data);
+    setPl(data.problemsArray);
+    setDone(data.userList);
+    console.log(pl);
+  };
 
   const fetchProblems = async () => {
     try {
-      // const { res } = await axios.get("/api/getProblems");
-      const { data } = await axios.get("/api/getProblems");
-      //console.log(data);
-      setArr(data);
-      //console.log("type of arr is " + typeof arr);
       const a = JSON.parse(localStorage.getItem("userInfo"));
-      personId = a;
-      completed = a.data.list;
+      console.log(a);
 
-      //console.log(completed);
-      // console.log(completed[0] + " ---- " + completed[1]);
-
-      //console.log(arr);
-      // console.log(data);
+      const kk = a.data._id;
+      console.log(kk);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { d } = await axios.get(
+        "/api/getProblems",
+        {
+          userId: kk,
+        },
+        config
+      );
     } catch (error) {
-      console.log("something is wrong");
+      console.log(error);
     }
   };
 
@@ -114,13 +154,7 @@ export default function Grid(props) {
     console.log(y);
   };
   useEffect(() => {
-    fetchProblems();
-
-    // for (let i = 0; i < completed.length; i++) {
-    //   myMap[completed[i]] = 1;
-    // }
-    //console.log(myMap);
-    //console.log(typeof completed[0]);
+    fetcher();
   }, []);
 
   // useEffect(() => {
@@ -177,7 +211,7 @@ export default function Grid(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {arr.map((it) => {
+          {pl.map((it) => {
             return props.top != it.tag ? (
               <></>
             ) : (
@@ -197,19 +231,15 @@ export default function Grid(props) {
                     <CheckBoxOutlineBlankIcon />
                   )} */}
 
-                  {it.checkedBy.find(
-                    (c) =>
-                      c ===
-                      JSON.parse(localStorage.getItem("userInfo")).data._id
-                  ) ? (
+                  {done.find((c) => c === it._id) ? (
                     <CheckIcon
                       className="gridElementFullBox"
-                      onClick={() => checkHandler(it._id)}
+                      onClick={() => validate(it._id)}
                     />
                   ) : (
                     <CheckBoxOutlineBlankIcon
                       className="gridElementHollowBox"
-                      onClick={() => checkHandler(it._id)}
+                      onClick={() => validate(it._id)}
                     />
                   )}
                 </td>

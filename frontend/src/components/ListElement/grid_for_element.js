@@ -4,6 +4,13 @@ import { useState, useEffect } from "react";
 import Badge from "react-bootstrap/Badge";
 import Check from "react-bootstrap/FormCheckInput";
 import axios from "axios";
+import Col from "react-bootstrap/Col";
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Tab from "react-bootstrap/Tab";
+
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
@@ -12,12 +19,14 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckIcon from "@mui/icons-material/Check";
 export default function Grid(props) {
+  const [list, setList] = useState([]);
   const [arr, setArr] = useState([]);
   const [pl, setPl] = useState([]);
   const [done, setDone] = useState([]);
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   // const x = props.l;
   // console.log(x);
+  const [name, setName] = useState("");
   const [badge, setBadge] = useState("sucess");
   let completed = [];
   let personId;
@@ -26,27 +35,20 @@ export default function Grid(props) {
     else if (str === "Hard") setBadge("danger");
     else setBadge("success");
   };
+  const fetchLists = async () => {
+    const a = JSON.parse(localStorage.getItem("userInfo")).data._id;
+    console.log(a);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-  const validate = async (id) => {
-    try {
-      //console.log("validation");
-      const a = JSON.parse(localStorage.getItem("userInfo"));
-      const kk = a.data._id;
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-      const d = await axios.post(`/api/markProblem/${kk}/${id}`, config);
-      let v = d.data.value;
-      //console.log(v);
-      //console.log("type of v is " + typeof v);
-      //console.log(d);
-      return v;
-    } catch (error) {
-      console.log(error);
-    }
+    const { data } = await axios.post(`/api/getList/${a}`, config);
+    setList(data);
+    console.log(data);
   };
+
   // const validate = async (id) => {
   //   try {
   //     //console.log("validation");
@@ -74,6 +76,40 @@ export default function Grid(props) {
   //     console.log(error);
   //   }
   // };
+  const createListHandler = async () => {
+    console.log("crea list");
+    const t = name;
+    const a = JSON.parse(localStorage.getItem("userInfo")).data._id;
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      "/api/createList",
+      {
+        userId: a,
+        title: t,
+      },
+      config
+    );
+    fetchLists();
+  };
+
+  const addTolistHandler = async (event, listId, problemId) => {
+    console.log("this is list id" + listId);
+    console.log("this is problem id" + problemId);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      `/api/addToList/${listId}/${problemId}`,
+      config
+    );
+    console.log(data);
+  };
 
   const fetcher = async () => {
     const a = JSON.parse(localStorage.getItem("userInfo")).data._id;
@@ -88,6 +124,27 @@ export default function Grid(props) {
     setPl(data.problemsArray);
     setDone(data.userList);
     console.log(pl);
+  };
+  const validate = async (id) => {
+    try {
+      //console.log("validation");
+      const a = JSON.parse(localStorage.getItem("userInfo"));
+      const kk = a.data._id;
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const d = await axios.post(`/api/markProblem/${kk}/${id}`, config);
+      let v = d.data.value;
+      //console.log(v);
+      fetcher();
+      //console.log("type of v is " + typeof v);
+      //console.log(d);
+      return v;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const fetchProblems = async () => {
@@ -117,11 +174,10 @@ export default function Grid(props) {
   const checkHandler = async (questionId) => {
     try {
       console.log("this is checkHandler");
-      //console.log(typeof questionId);
-      //console.log("this is checker");
+
       const a = JSON.parse(localStorage.getItem("userInfo"));
       const kk = a.data._id;
-      //console.log(typeof a.data._id);
+
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -135,10 +191,6 @@ export default function Grid(props) {
         },
         config
       );
-      if (d) {
-        fetchProblems();
-      }
-      //console.log(d);
     } catch (error) {
       console.log(error);
     }
@@ -150,16 +202,14 @@ export default function Grid(props) {
   }
   const caller = (y) => {
     console.log("this is calller function");
-    //console.log(x);
+
     console.log(y);
   };
   useEffect(() => {
+    fetchLists();
     fetcher();
   }, []);
 
-  // useEffect(() => {
-  //   func(props.difficulty);
-  // });
   const printer = async (id) => {
     console.log(typeof id);
     console.log(JSON.stringify(id));
@@ -174,21 +224,9 @@ export default function Grid(props) {
     console.log(x);
     console.log(y);
   };
-
-  // useEffect(() => {
-  //   // axios
-  //   //   .get("https://jsonplaceholder.typicode.com/posts")
-  //   //   .then((res) => {
-  //   //     const obj = res.data.slice(15);
-  //   //     setData(obj);
-  //   //     console.log(typeof data);
-  //   //   })
-  //   //   .catch((err) => {
-  //   //     console.log(err);
-  //   //   });
-  //   setP(props.arr);
-  //   console.log(p);
-  // }, []);
+  const functtt = async () => {
+    console.log("this is another function");
+  };
 
   return (
     <>
@@ -255,14 +293,46 @@ export default function Grid(props) {
                       checkedIcon={<Favorite />}
                     />
                     <Dropdown.Toggle variant="link" id="dropdown-split-basic" />
-                    <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Menu className="gridElementDropdownWrapper">
+                      {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                       <Dropdown.Item href="#/action-2">
                         Another action
                       </Dropdown.Item>
                       <Dropdown.Item href="#/action-3">
                         Something else
-                      </Dropdown.Item>
+                      </Dropdown.Item> */}
+                      {list.map((itr) => {
+                        return (
+                          <div
+                            onClick={(e) => {
+                              addTolistHandler(e, itr._id, it._id);
+                            }}
+                          >
+                            <Dropdown.Item href="#/action-3">
+                              {itr.listTitle}
+                            </Dropdown.Item>
+                          </div>
+                        );
+                      })}
+
+                      <Form className="gridElementCreateListSection">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Control
+                            type="email"
+                            placeholder="Enter Name"
+                            className="gridElementCreateListTextField"
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </Form.Group>
+
+                        <Button
+                          onClick={createListHandler}
+                          variant="primary"
+                          type="submit"
+                        >
+                          Create List
+                        </Button>
+                      </Form>
                     </Dropdown.Menu>
                   </Dropdown>
                 </td>
